@@ -81,127 +81,76 @@ def get_weathercode():
 
     return weather_code
 
+def get_weatherstate():
+    if weather_code == 0:
+        weather_state = clear_sky
+    elif weather_code == 1:
+        weather_state = mainly_clear
+    elif weather_code == 2:
+        weather_state = partly_cloudy
+    elif weather_code == 3:
+        weather_state = overcast
+    elif weather_code == 45:
+        weather_state = fog
+    elif weather_code == 48:
+        weather_state = deposting_rime_fog
+    elif weather_code == 51:
+        weather_state = drizzle_light
+    elif weather_code == 53:
+        weather_state = drizzle_moderate
+    elif weather_code == 55:
+        weather_state = drizzle_dense
+    elif weather_code == 56:
+        weather_state = freezing_drizzle_light
+    elif weather_code == 57:
+        weather_state = freezing_drizzle_dense
+    elif weather_code == 61:
+        weather_state = rain_slight
+    elif weather_code == 63:
+        weather_state = rain_moderate
+    elif weather_code == 65:
+        weather_state = rain_heavy
+    elif weather_code == 66:
+        weather_state = freezing_rain_light
+    elif weather_code == 67:
+        weather_state = freezing_rain_heavy
+    elif weather_code == 71:
+        weather_state = snow_fall_slight
+    elif weather_code == 73:
+        weather_state = snow_fall_moderate
+    elif weather_code == 75:
+        weather_state = snow_fall_heavy
+    elif weather_code == 77:
+        weather_state = snow_grains
+    elif weather_code == 80:
+        weather_state = rain_showers_slight
+    elif weather_code == 81:
+        weather_state = rain_showers_moderate
+    elif weather_code == 82:
+        weather_state = rain_showers_violent
+    elif weather_code == 85:
+        weather_state = snow_showers_slight
+    elif weather_code == 86:
+        weather_state = snow_showers_heavy
+    elif weather_code == 95:
+        weather_state = thunderstorm
+    elif weather_code == 96:
+        weather_state = thunderstorm_with_slight_hail
+    elif weather_code == 99:
+        weather_state = thunderstorm_with_heavy_hail
+
+    return weather_state
+
+# User variable inputs
+
 print("Enter your City name. ")
 local_city_input = input(" > ")
 
 lgitude_value, ltitude_value = convert_geocoding()
 weather_code = get_weathercode()
+local_city_weather_state = get_weatherstate()
 
-# The chechlist :D:D:D:D::DD:D:D:D::D:D::D:D::D
-
-if weather_code:
-    if weather_code == 0:
-        print(current_weather,clear_sky,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={clear_sky}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code ==  1:
-        print(current_weather,mainly_clear,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={mainly_clear}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 2:
-        print(current_weather,partly_cloudy,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={partly_cloudy}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 3:
-        print(current_weather,overcast,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={overcast}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 45:
-        print(current_weather,fog,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={fog}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 48:
-        print(current_weather,deposting_rime_fog,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={deposting_rime_fog}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 51:
-        print(current_weather,drizzle_light,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={drizzle_light}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 53:
-        print(current_weather,drizzle_moderate,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={drizzle_moderate}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 55:
-        print(current_weather,drizzle_dense,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={drizzle_dense}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 56:
-        print(current_weather,freezing_drizzle_light,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={freezing_drizzle_light}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 57:
-        print(current_weather,freezing_drizzle_dense,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={freezing_drizzle_dense}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 61:
-        print(current_weather,rain_slight,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_slight}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 63:
-        print(current_weather,rain_moderate,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_moderate}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 65:
-        print(current_weather,rain_heavy,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_heavy}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 66:
-        print(current_weather,freezing_rain_light,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={freezing_rain_light}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 67:
-        print(current_weather,freezing_rain_heavy,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={freezing_rain_heavy}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 71:
-        print(current_weather,snow_fall_slight,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_fall_slight}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 73:
-        print(current_weather,snow_fall_moderate,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_fall_moderate}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 75:
-        print(current_weather,snow_fall_heavy,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_fall_heavy}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 77:
-        print(current_weather,snow_grains,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_grains}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 80:
-        print(current_weather,rain_showers_slight,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_showers_slight}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 81:
-        print(current_weather,rain_showers_moderate,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_showers_moderate}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 82:
-        print(current_weather,rain_showers_violent,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={rain_showers_violent}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 85:
-        print(current_weather,snow_showers_slight,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_showers_slight}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 86:
-        print(current_weather,snow_showers_heavy,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={snow_showers_heavy}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 95:
-        print(current_weather,thunderstorm,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={thunderstorm}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 96:
-        print(current_weather,thunderstorm_with_slight_hail,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={thunderstorm_with_slight_hail}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-    elif weather_code == 99:
-        print(current_weather,thunderstorm_with_heavy_hail,searching_playlist)
-        playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={thunderstorm_with_heavy_hail}&type=playlist&market=de", headers=header_api_token).json()
-        print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
-
-
-
+print(f"The current state of the city you've entered in is {local_city_weather_state}.\nLooking for matching playlist...")
+input("Press ENTER to get the link matching to the weather.\n")
+playlist_get = requests.get(f"https://api.spotify.com/v1/search?q={local_city_weather_state}&type=playlist&market=de", headers=header_api_token).json()
+print(playlist_get["playlists"]["items"][0]["external_urls"]["spotify"])
